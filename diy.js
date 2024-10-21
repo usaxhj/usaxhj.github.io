@@ -72,7 +72,7 @@ function showThirdPopup() {
                 Swal.showValidationMessage('回答不能为空');
                 return false;
             } else if (userInput !== correctAnswer) {
-                Swal.showValidationMessage('回答错误，请重新输入正确的答案。');
+                Swal.showValidationMessage('回答错误，请返回查看登录教程！');
                 return false;
             } else {
                 return userInput; // 如果答案正确，返回用户输入

@@ -56,46 +56,55 @@ document.addEventListener('DOMContentLoaded', (event) => {
 function showThirdPopup() {
     Swal.fire({
         title: '新手登录问题选择3',
-        html: `<p>点击其他选项后，第二步再点什么？</p><img src="03.jpg" width="90%"><br>
+        html: `<p>点击其他选项后，第二步再点什么？</p>
+               <img src="03.jpg" width="90%"><br>
                请输入<span style="color: #e03e2d;"> 升级账户安全 </span>或<span style="color: #e03e2d;"> 不升级</span>
                `,
-        input: 'text', // 添加 input 字段，自动处理回车键
+        input: 'text', // Adds an input field and handles Enter key
         inputPlaceholder: "请输入你的答案",
-        showCancelButton: true, // 显示取消按钮
+        showCancelButton: true, // Show the cancel button
         confirmButtonText: '提交',
         cancelButtonText: '取消',
         preConfirm: (value) => {
-            const userInput = value.trim(); // 获取用户输入并去除空格
-            const correctAnswer = "不升级"; // 替换为实际正确答案
+            const userInput = value.trim(); // Trim user input to avoid whitespace issues
+            const correctAnswer = "不升级"; // Actual correct answer
 
             if (!userInput) {
-                Swal.showValidationMessage('回答不能为空');
+                Swal.showValidationMessage('回答不能为空'); // Input cannot be empty
                 return false;
             } else if (userInput !== correctAnswer) {
-                Swal.showValidationMessage('回答错误，请返回查看登录教程！');
+                Swal.showValidationMessage('回答错误，请返回查看登录教程！'); // Wrong answer
                 return false;
             } else {
-                return userInput; // 如果答案正确，返回用户输入
+                return userInput; // Return user input if the answer is correct
             }
         }
     }).then((result) => {
         if (result.isConfirmed) {
             // 验证成功后处理
-            copyToClipboard('您的密码已复制到剪贴板！');
-            Swal.fire('验证成功', '密码已复制到剪贴板！', 'success');
+            const button = document.getElementById('myButton'); // Get the button element
+            const textToCopy = button.getAttribute('data-text'); // Extract the value of the data-text attribute
+            copyToClipboard(textToCopy); // Call the function with the extracted text
         } else if (result.dismiss === Swal.DismissReason.cancel) {
             Swal.fire('已取消', '你已取消新手验证', 'info');
         }
     });
 }
 
-    // 复制文本功能
-    function copyToClipboard(textToCopy) {
-        const tempInput = document.createElement('input');
-        tempInput.value = textToCopy;
-        document.body.appendChild(tempInput);
-        tempInput.select();
-        document.execCommand('copy');
-        document.body.removeChild(tempInput);
-    }
+// Clipboard copy function
+function copyToClipboard(text) {
+    const clipboard = new ClipboardJS('.swal2-confirm', {
+        text: () => text // Pass the text to copy
+    });
+
+    clipboard.on('success', () => {
+        Swal.fire('已成功复制密码', '新手验证成功', 'success');
+        clipboard.destroy(); // Destroy clipboard instance after copying
+    });
+
+    clipboard.on('error', () => {
+        Swal.fire('失败', '文本复制失败，请手动复制！', 'error');
+    });
+}
+
 });

@@ -5,8 +5,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 title: '新手登录问题选择1',
                 html: `<p>共享账号在哪里登录是安全的？</p>
                     <div class="button-container">
-                        <img src="01a.png" id="correctButton1" alt="正确链接图片">
-                        <img src="01b.png" id="wrongButton1" alt="错误链接图片">
+                        <img src="./AppleAuto/01a.png" id="correctButton1" alt="正确链接图片">
+                        <img src="./AppleAuto/01b.png" id="wrongButton1" alt="错误链接图片">
                     </div>
                 `,
                 showCancelButton: false,
@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 title: '新手登录问题选择2',
                 html: ` <p>登录账号时弹出AppleID安全提示，点什么？</p><hr>
                    
-                    <img src="02.png" width="90%"> <br>  
+                    <img src="./AppleAuto/02.png" width="90%"> <br>  
                     <p id="wrongButton2">继续</p>
                     <p id="correctButton2">其他选项</p>
                     
@@ -57,7 +57,7 @@ function showThirdPopup() {
     Swal.fire({
         title: '新手登录问题选择3',
         html: `<p>点击其他选项后，第二步再点什么？</p>
-               <img src="03.jpg" width="90%"><br>
+               <img src="./AppleAuto/03.jpg" width="90%"><br>
                请输入<span style="color: #e03e2d;"> 升级账户安全 </span>或<span style="color: #e03e2d;"> 不升级</span>
                `,
         input: 'text', // Adds an input field and handles Enter key

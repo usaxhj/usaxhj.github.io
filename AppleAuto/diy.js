@@ -55,7 +55,7 @@
         function showThirdPopup(buttonId) {
             Swal.fire({
                 title: '新手登录问题选择3',
-                html: `<p>点击其他选项后，第二步再点什么？</p><img src="https://cdn.jsdelivr.net/gh/usaxhj/usaxhj.github.io/AppleAuto/03.jpg" width="99%"><br>
+                html: `<p>点击其他选项后，第二步再点什么？</p><img src="https://cdn.jsdelivr.net/gh/usaxhj/usaxhj.github.io/AppleAuto/03.jpg" width="99%"><br><br>
                        请输入<span style="color: #e03e2d;"> 升级账户安全 </span>或<span style="color: #e03e2d;"> 不升级</span>`,
                 input: 'text',
                 inputPlaceholder: "请输入你的答案",
